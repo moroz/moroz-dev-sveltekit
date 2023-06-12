@@ -1,0 +1,20 @@
+@import @css/prelude
+
+:root
+  @each $key, $value in $light-palette
+    --#{$key}: #{$value}
+
+html,
+body
+  margin: 0
+  padding: 0
+  font-size: 100%
+
+body
+  font-family: $font-family-sans
+  background: var(--emph-bg)
+  color: var(--body-fg)
+  font-weight: 500
+
+*, *::after, *::before
+  box-sizing: border-box
