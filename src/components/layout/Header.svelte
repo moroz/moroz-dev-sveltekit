@@ -46,7 +46,8 @@
 			line-height: $header-height;
 
 			&:hover {
-				background: lime;
+				background: var(--primary);
+				color: var(--body-bg);
 			}
 		}
 	}

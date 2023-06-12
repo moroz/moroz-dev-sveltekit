@@ -4,11 +4,16 @@
   @each $key, $value in $light-palette
     --#{$key}: #{$value}
 
+  +dark
+    @each $key, $value in $dark-palette
+      --#{$key}: #{$value}
+
 html,
 body
   margin: 0
   padding: 0
   font-size: 100%
+  color-scheme: dark light
 
 body
   font-family: $font-family-sans
