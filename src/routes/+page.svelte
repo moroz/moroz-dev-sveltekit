@@ -1,5 +1,7 @@
-<h2>Hello world! 👋</h2>
-<h3>My name is Karol Moroz.<br />I am a software developer based in Poland.</h3>
+<div class="container">
+	<h2>Hello world! 👋</h2>
+	<h3>My name is Karol Moroz.<br />I am a software developer based in Poland.</h3>
+</div>
 
 <style lang="scss">
 	h2,
@@ -11,6 +13,7 @@
 
 	h2 {
 		font-size: 7rem;
+		margin-top: 5rem;
 	}
 
 	h3 {

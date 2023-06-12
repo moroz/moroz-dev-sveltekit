@@ -1,21 +1,23 @@
 <header>
-	<a class="logo" href="/">
-		<h1>moroz.dev</h1>
-	</a>
+	<div class="container">
+		<a class="logo" href="/">
+			<h1>moroz.dev</h1>
+		</a>
 
-	<nav>
-		<a href="/">Home</a>
-		<a href="/blog">Blog</a>
-		<a href="/contact">Contact</a>
-		<a href="/videos">Videos</a>
-		<a href="/resume.pdf">Résumé</a>
-	</nav>
+		<nav>
+			<a href="/">Home</a>
+			<a href="/blog">Blog</a>
+			<a href="/contact">Contact</a>
+			<a href="/videos">Videos</a>
+			<a href="/resume.pdf">Résumé</a>
+		</nav>
+	</div>
 </header>
 
 <style lang="scss">
 	@import "@css/prelude";
 
-	header {
+	.container {
 		display: flex;
 		height: $header-height;
 		overflow: hidden;
