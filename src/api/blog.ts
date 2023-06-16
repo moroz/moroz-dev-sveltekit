@@ -3,7 +3,7 @@ import matter from "gray-matter";
 import { join, basename } from "path";
 import type { BasicPostData, BlogEntry, Post, Video } from "@api/interfaces";
 import dayjs from "dayjs";
-import glob from "glob";
+import * as glob from "glob";
 import { formatMarkdown } from "$lib/markdown";
 
 const isDev = process.env.NODE_ENV !== "production";
@@ -118,7 +118,7 @@ export function getSortedVideoData() {
 	});
 }
 
-export async function paginatePosts(page = 1) {
+export async function paginatePosts(page = 1): Promise<[BasicPostData[], number]> {
 	const allPosts = await getSortedPostData();
 	const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 	const startOffset = (page - 1) * POSTS_PER_PAGE;
