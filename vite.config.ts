@@ -9,6 +9,7 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
+			"@api": path.join(process.cwd(), "src/api"),
 			"@css": path.join(process.cwd(), "src/css"),
 			"@components": path.join(process.cwd(), "src/components"),
 			"@": path.join(process.cwd(), "src"),

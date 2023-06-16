@@ -8,13 +8,6 @@
 </div>
 
 <style lang="scss">
-	h2,
-	h3 {
-		font-weight: 500;
-		line-height: 1.25;
-		margin: 0;
-	}
-
 	h2 {
 		font-size: 7rem;
 		margin-top: 5rem;

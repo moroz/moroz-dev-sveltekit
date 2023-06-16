@@ -31,6 +31,14 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"sass": "^1.63.3"
+		"dayjs": "^1.11.8",
+		"glob": "^10.2.7",
+		"gray-matter": "^4.0.3",
+		"highlight.js": "^11.8.0",
+		"remark-html": "^15.0.2",
+		"remark-parse": "^10.0.2",
+		"remark-smartypants": "^2.0.0",
+		"sass": "^1.63.3",
+		"unified": "^10.1.2"
 	}
 }
