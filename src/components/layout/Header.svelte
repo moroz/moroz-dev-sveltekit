@@ -17,7 +17,7 @@
 	@import "@css/prelude";
 
 	header {
-		background: var(--emph-bg);
+		background: var(--body-bg);
 		position: fixed;
 		inset: 0;
 		bottom: unset;

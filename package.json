@@ -15,6 +15,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
+		"@types/hast": "^2.3.4",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"eslint": "^8.28.0",
@@ -32,14 +33,20 @@
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.2",
+		"@wooorm/starry-night": "^2.0.0",
 		"dayjs": "^1.11.8",
 		"glob": "^10.2.7",
 		"gray-matter": "^4.0.3",
+		"hast": "^1.0.0",
+		"hast-util-to-string": "^2.0.0",
 		"highlight.js": "^11.8.0",
+		"rehype-stringify": "^9.0.3",
 		"remark-html": "^15.0.2",
 		"remark-parse": "^10.0.2",
+		"remark-rehype": "^10.1.0",
 		"remark-smartypants": "^2.0.0",
 		"sass": "^1.63.3",
-		"unified": "^10.1.2"
+		"unified": "^10.1.2",
+		"unist-util-visit": "^4.1.2"
 	}
 }

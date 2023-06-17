@@ -15,9 +15,13 @@ body
   font-size: 100%
   color-scheme: dark light
 
+html
+  overflow-y: scroll
+  scrollbar-gutter: stable
+
 body
   font-family: $font-family-sans
-  background: var(--emph-bg)
+  background: var(--body-bg)
   color: var(--body-fg)
   font-weight: 500
 
@@ -44,3 +48,11 @@ h3
 .system-font
   font-family: $font-family-system
   font-weight: 400
+
+pre, code
+  font-family: $font-family-monospace
+
+pre
+  padding: 1em
+  background: var(--emph-bg)
+  font-size: .875rem

@@ -4,7 +4,7 @@ import { join, basename } from "path";
 import type { BasicPostData, BlogEntry, Post, Video } from "@api/interfaces";
 import dayjs from "dayjs";
 import * as glob from "glob";
-import { formatMarkdown } from "$lib/markdown";
+import { formatMarkdown, formatMarkdownWithoutSyntax } from "$lib/markdown";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -21,7 +21,7 @@ export async function getPostDataBySlug(slug: string) {
 export async function buildMetadata(data: Record<string, any>) {
 	const date = new Date(data.date).toISOString();
 	const datePretty = dayjs(date).format("MMMM D, YYYY");
-	const summary = data.summary ? await formatMarkdown(data.summary) : null;
+	const summary = data.summary ? await formatMarkdownWithoutSyntax(data.summary) : null;
 	const summaryPlain = data.summary ?? null;
 	return {
 		date,
