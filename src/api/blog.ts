@@ -14,7 +14,7 @@ const videosDirectory = join(process.cwd(), "src/content/videos");
 export const POSTS_PER_PAGE = 20;
 
 export async function getPostDataBySlug(slug: string) {
-	const path = glob.sync(`${postsDirectory}/**/${slug}.md`)[0];
+	const path = glob.sync(`${postsDirectory}/**/${slug}.{md,mdx}`)[0];
 	return getPostData({ slug, filename: path });
 }
 
@@ -73,8 +73,8 @@ export function getVideoData({ filename }: BlogEntry): Video {
 }
 
 export function getAllSlugs(directory: string) {
-	return glob.sync(`${directory}/**/*.md`).map((filename) => {
-		const slug = basename(filename, ".md");
+	return glob.sync(`${directory}/**/*.{md,mdx}`).map((filename) => {
+		const slug = basename(filename).replace(/\.mdx?/, "");
 		return {
 			slug,
 			filename,
