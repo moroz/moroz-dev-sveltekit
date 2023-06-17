@@ -1,5 +1,5 @@
 <header>
-	<div class="container">
+	<div class="wrapper hero-container">
 		<a class="logo" href="/">
 			<h1>moroz.dev</h1>
 		</a>
@@ -8,7 +8,6 @@
 			<a href="/">Home</a>
 			<a href="/blog">Blog</a>
 			<a href="/contact">Contact</a>
-			<a href="/videos">Videos</a>
 			<a href="/resume.pdf">Résumé</a>
 		</nav>
 	</div>
@@ -17,7 +16,15 @@
 <style lang="scss">
 	@import "@css/prelude";
 
-	.container {
+	header {
+		background: var(--emph-bg);
+		position: fixed;
+		inset: 0;
+		bottom: unset;
+		z-index: 2;
+	}
+
+	.wrapper {
 		display: flex;
 		height: $header-height;
 		overflow: hidden;

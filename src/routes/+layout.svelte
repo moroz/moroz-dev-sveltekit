@@ -1,9 +1,15 @@
 <script lang="ts">
+	import { page } from "$app/stores";
 	import "@css/globals.sass";
 	import Header from "@components/layout/Header.svelte";
 	import Footer from "@components/layout/Footer.svelte";
+
+	const DEFAULT_TITLE = "moroz.dev";
 </script>
 
+<svelte:head>
+	<title>{$page.data.title ? `${$page.data.title} | ` : ""}{DEFAULT_TITLE}</title>
+</svelte:head>
 <div class="layout">
 	<Header />
 	<main>
@@ -22,6 +28,7 @@
 	}
 
 	main {
+		padding-top: $header-height;
 		flex: 1;
 	}
 </style>

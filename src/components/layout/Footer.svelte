@@ -1,5 +1,5 @@
 <footer>
-	<div class="container">
+	<div class="wrapper hero-container">
 		<p>&copy; 2020&ndash;2023 by Karol Moroz. All rights reserved.</p>
 	</div>
 </footer>
@@ -8,11 +8,11 @@
 	@import "@css/prelude";
 
 	footer,
-	.container {
+	.wrapper {
 		height: $header-height;
 	}
 
-	.container {
+	.wrapper {
 		text-align: right;
 		display: flex;
 		align-items: center;

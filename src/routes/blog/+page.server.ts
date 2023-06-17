@@ -5,6 +5,7 @@ export const load = (async () => {
 	const [posts, totalPages] = await paginatePosts(1);
 
 	return {
+		title: "Blog",
 		posts,
 		totalPages,
 	};

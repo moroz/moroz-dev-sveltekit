@@ -1,4 +1,4 @@
-<div class="container">
+<div class="hero-container">
 	<h2>Hello world! 👋</h2>
 	<h3>My name is Karol Moroz.<br />I am a software developer based in Poland.</h3>
 	<section class="ctas">

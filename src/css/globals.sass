@@ -25,7 +25,11 @@ body
   box-sizing: border-box
 
 .container
-  margin: 0 $body-content-horizontal-padding
+  width: $content-width
+  margin: 0 auto
+
+.hero-container
+  margin: 0 $hero-content-horizontal-padding
 
 h2, h3 
   font-weight: 500
@@ -36,3 +40,6 @@ h2
   font-size: 3rem
 h3
   font-size: 1.5rem
+
+.system-font
+  font-family: $font-family-system
