@@ -11,7 +11,7 @@
 		<h3>{post.title}</h3>
 	</a>
 	{#if post.summary}
-		<div class="summary">{@html post.summary}</div>
+		<div class="summary system-font">{@html post.summary}</div>
 	{/if}
 	<a href={url} class="read-more">Read post...</a>
 </article>
