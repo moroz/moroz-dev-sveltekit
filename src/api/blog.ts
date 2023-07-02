@@ -4,7 +4,7 @@ import { join, basename } from "path";
 import type { BasicPostData, BlogEntry, Post, Video } from "@api/interfaces";
 import dayjs from "dayjs";
 import * as glob from "glob";
-import { formatMarkdown, formatMarkdownWithoutSyntax } from "$lib/markdown";
+import { formatMarkdownWithoutSyntax } from "$lib/markdown";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -14,7 +14,7 @@ const videosDirectory = join(process.cwd(), "src/content/videos");
 export const POSTS_PER_PAGE = 20;
 
 export async function getPostDataBySlug(slug: string) {
-	const path = glob.sync(`${postsDirectory}/**/${slug}.{md,mdx}`)[0];
+	const path = glob.sync(`${postsDirectory}/**/${slug}.md`)[0];
 	return getPostData({ slug, filename: path });
 }
 

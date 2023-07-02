@@ -11,6 +11,9 @@ dependencies:
   '@wooorm/starry-night':
     specifier: ^2.0.0
     version: 2.0.0
+  clsx:
+    specifier: ^1.2.1
+    version: 1.2.1
   dayjs:
     specifier: ^1.11.8
     version: 1.11.8
@@ -857,6 +860,11 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}

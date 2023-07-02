@@ -7,7 +7,7 @@ summary: |
   I intended to write about `@AppStorage` and `@SceneStorage`, but I ended up playing around with SQLite3 in C and Swift.
 ---
 
-Today I followed chapter 8 of the [SwiftUI Apprentice]() tutorial.
+Today I followed chapter 8 of the [SwiftUI Apprentice](https://www.kodeco.com/books/swiftui-apprentice/v1.0) tutorial.
 Although a bit difficult to follow, the chapter described several data persistence APIs on Apple platforms, and taught how to use `@AppStorage` and `@SceneStorage`.
 These APIs persist data in a space called "user defaults," which is a wrapper for "property lists," which in turn are basically XML files saved to the application's sandboxed file storage (under `Library/Preferences`, IIRC).
 Since the data needs to be serialized to XML, these types of storage only support primitive scalar values, such as strings, numbers, or booleans.
@@ -16,9 +16,16 @@ For more complex values, there is an API called Core Data, which is a wrapper ov
 Since I have never really used SQLite before (except when I inadvertently initialized Rails projects without specifying the database engine), and since the Swift `SQLite3` library is literally just `sqlite.c` with Swift typings, I decided to try the library out in C first.
 Ah, the joy of low-level compiled languages comes to full fruition in the Swift ecosystem, where some libraries are written in C, some in Objective-C, and some in Swift, and they all just call each other at random.
 
-<Figure src="/images/ios-13/sqlite3_prepare_v2.webp">
+<figure>
+  <a href="/images/ios-13/sqlite3_prepare_v2.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-13/sqlite3_prepare_v2.webp" />
+    </picture>
+  </a>
+  <figcaption>
 Swift typings for SQLite3 C libraries. Wait, was the SQL query implicitly coerced from a <code>String</code> to <code>UnsafePointer&lt;CChar&gt;!</code>?
-</Figure>
+</figcaption>
+</figure>
 
 Following the tutorial at [ZetCode](https://zetcode.com/db/sqlitec/), I started with the following C program that fetches the version of the SQLite engine and prints it to standard output:
 

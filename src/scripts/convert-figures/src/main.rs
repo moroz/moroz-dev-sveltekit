@@ -4,7 +4,7 @@ use std::fmt::{Display, Formatter};
 use std::{borrow::Cow, env, error::Error, fs, io, path::PathBuf};
 
 lazy_static! {
-    static ref FIGURE_REGEX: Regex = Regex::new(r#"<Figure\s*([^>]*)>(.+)</Figure>"#).unwrap();
+    static ref FIGURE_REGEX: Regex = Regex::new(r#"(?s)<Figure\s*([^>]*)>(.+)</Figure>"#).unwrap();
     static ref ATTRIBUTES_REGEX: Regex = Regex::new(r#"([a-zA-Z_]+)="([^"]+)""#).unwrap();
     static ref IMPORT_REGEX: Regex = Regex::new(r#"import Figure from "[^"]+";?\n*"#).unwrap();
 }

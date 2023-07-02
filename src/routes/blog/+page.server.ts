@@ -7,6 +7,7 @@ export const load = (async () => {
 	return {
 		title: "Blog",
 		posts,
+		currentPage: 1,
 		totalPages,
 	};
 }) satisfies PageServerLoad;
