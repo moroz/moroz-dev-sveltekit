@@ -1,6 +1,6 @@
 use lazy_static::lazy_static;
 use regex::Regex;
-use std::{env, error::Error, fs, io, path::PathBuf};
+use std::{borrow::Cow, env, error::Error, fs, io, path::PathBuf};
 
 lazy_static! {
     static ref FIGURE_REGEX: Regex = Regex::new(r#"<Figure\s*([^>]*)>(.+)</Figure>"#).unwrap();
@@ -74,12 +74,30 @@ fn find_all_mdx_files(base_dir: &PathBuf) -> Vec<PathBuf> {
     }
 }
 
-fn find_all_figures_in_file(path: impl Into<PathBuf>) -> io::Result<Vec<String>> {
-    let file = fs::read_to_string(path.into())?;
+fn build_out_filename(original_path: &PathBuf) -> PathBuf {
+    let file_name = original_path.file_name().unwrap().to_str().unwrap();
+    let mut res = original_path.clone();
+    let file_name = file_name.replace(".mdx", ".md");
+    res.set_file_name(file_name);
+
+    return res;
+}
+
+fn replace_figures(string: &str) -> Cow<'_, str> {
+    FIGURE_REGEX.replace_all(string, |caps: &regex::Captures| {
+        let figure = Figure::new(&caps[1], &caps[2]);
+        format!("{:?}", figure)
+    })
+}
+
+fn find_all_figures_in_string(string: &str) -> io::Result<Vec<String>> {
     let matches: Vec<_> = FIGURE_REGEX
-        .captures_iter(&file)
-        .map(|cap| {
-            let figure = Figure::new(cap.get(1).unwrap().as_str(), cap.get(2).unwrap().as_str());
+        .captures_iter(string)
+        .map(|caps: regex::Captures| {
+            let figure = Figure::new(
+                &caps.get(1).unwrap().as_str(),
+                &caps.get(2).unwrap().as_str(),
+            );
             return figure;
         })
         .collect();
@@ -91,7 +109,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     let git_root = find_git_root().unwrap();
     let files = find_all_mdx_files(&git_root);
     for file in files {
-        find_all_figures_in_file(&file)?;
+        let outfile = build_out_filename(&file);
+        let string: String = fs::read_to_string(file)?;
+        let replaced = replace_figures(&string);
+        fs::write(outfile, replaced.to_string())?;
     }
     Ok(())
 }
