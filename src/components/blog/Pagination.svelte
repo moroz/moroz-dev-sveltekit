@@ -12,6 +12,6 @@
 
 <section class="pagination">
 	{#each links as [page, url]}
-		<a href={url} class={clsx(page === currentPage && "active")}>{page}</a>
+		<a href={url} data-sveltekit-reload class={clsx(page === currentPage && "active")}>{page}</a>
 	{/each}
 </section>
