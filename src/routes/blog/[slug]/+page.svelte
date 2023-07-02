@@ -41,4 +41,25 @@
 
     :global(h2)
       font-size: 2rem
+
+    :global(figure) 
+      display: flex
+      flex-direction: column
+      align-items: center
+      margin: 1.25em 0
+    
+      :global(img)
+        max-width: 100%
+        max-height: 60vh
+
+        @include light 
+          outline: 1px solid #aaa
+      
+    :global(figcaption)
+      text-align: center
+      font-size: 0.9em
+      counter-increment: figure
+
+      &::before 
+        content: "Fig. " counter(figure) ": "
 </style>
