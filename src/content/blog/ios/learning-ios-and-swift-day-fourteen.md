@@ -10,8 +10,6 @@ summary: |
   Finally, I found out how to detect dark mode on macOS using Swift APIs.
 
 ---
-import Figure from "@components/Figure.astro";
-
 Today's post will be rich in code and mostly devoid of comments.
 
 ## Automatic dark mode in Vim
@@ -69,7 +67,14 @@ I built a very simple interface to try out and debug SQLite3 bindings.
 Its source code is available on [Github](https://github.com/moroz/ios-practice/tree/master/SQLiteTest).
 At its finest, it is a pinnacle of UI design:
 
-<Figure bordered src="/images/ios-14/db-facing-app.webp">Hello world, full path of the database file, a button.</Figure>
+<figure>
+  <a href="/images/ios-14/db-facing-app.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-14/db-facing-app.webp" />
+    </picture>
+  </a>
+  <figcaption>Hello world, full path of the database file, a button.</figcaption>
+</figure>
 
 In order to get this program to run, I implemented a `DataStore` class:
 
@@ -218,5 +223,12 @@ The full path of the database file is printed to the console in Xcode, for each 
 If you have [TablePlus](https://tableplus.com/) installed, you can open SQLite database files in this program, otherwise you can use the `sqlite3` CLI.
 This is the database created by this application: :
 
-<Figure src="/images/ios-14/db-schema-in-tableplus.webp">An older version of the table, when `id` was still an `int` rather than `integer` and primary keys were not filled.</Figure>
+<figure>
+  <a href="/images/ios-14/db-schema-in-tableplus.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-14/db-schema-in-tableplus.webp" />
+    </picture>
+  </a>
+  <figcaption>An older version of the table, when `id` was still an `int` rather than `integer` and primary keys were not filled.</figcaption>
+</figure>
 

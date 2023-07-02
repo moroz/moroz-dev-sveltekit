@@ -1,10 +1,12 @@
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::fmt::{Display, Formatter};
 use std::{borrow::Cow, env, error::Error, fs, io, path::PathBuf};
 
 lazy_static! {
     static ref FIGURE_REGEX: Regex = Regex::new(r#"<Figure\s*([^>]*)>(.+)</Figure>"#).unwrap();
     static ref ATTRIBUTES_REGEX: Regex = Regex::new(r#"([a-zA-Z_]+)="([^"]+)""#).unwrap();
+    static ref IMPORT_REGEX: Regex = Regex::new(r#"import Figure from "[^"]+";?\n*"#).unwrap();
 }
 
 #[derive(Default, Clone, Debug)]
@@ -42,6 +44,67 @@ impl<'a> Figure<'a> {
         }
 
         return res;
+    }
+}
+
+impl Display for Figure<'_> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+        // <figure>
+        // <a href={src} title="Click to enlarge" target="_blank">
+        //   <picture>
+        //     <source
+        //       srcset={src}
+        //       media={darkSrc ? "(prefers-color-scheme: light)" : undefined}
+        //     />
+        //     {
+        //       darkSrc ? (
+        //         <source srcset={darkSrc} media={"(prefers-color-scheme: dark)"} />
+        //       ) : null
+        //     }
+        //     <img src={src} alt={alt} />
+        //   </picture>
+        // </a>
+        // <figcaption>
+        //   <slot />
+        // </figcaption>
+        // </figure>
+
+        writeln!(f, "<figure>")?;
+        writeln!(
+            f,
+            r#"  <a href="{}" title="Click to enlarge" target="_blank">"#,
+            self.src
+        )?;
+        writeln!(f, "    <picture>")?;
+
+        if self.dark_src.is_some() {
+            writeln!(
+                f,
+                r#"      <source srcset="{}" media="(prefers-color-scheme: light)" />"#,
+                self.src
+            )?;
+            writeln!(
+                f,
+                r#"      <source srcset="{}" media="(prefers-color-scheme: dark)" />"#,
+                self.dark_src.unwrap()
+            )?;
+        }
+
+        // <img tag>
+        write!(f, r#"      <img src="{}""#, self.src)?;
+        match self.alt {
+            Some(alt) => {
+                writeln!(f, " alt=\"{}\" />", alt)?;
+            }
+            _ => {
+                writeln!(f, " />")?;
+            }
+        }
+
+        writeln!(f, "    </picture>\n  </a>")?;
+        writeln!(f, "  <figcaption>{}</figcaption>", self.body)?;
+        write!(f, "</figure>")?;
+        Ok(())
     }
 }
 
@@ -83,11 +146,15 @@ fn build_out_filename(original_path: &PathBuf) -> PathBuf {
     return res;
 }
 
-fn replace_figures(string: &str) -> Cow<'_, str> {
-    FIGURE_REGEX.replace_all(string, |caps: &regex::Captures| {
+fn replace_figures<'a>(string: impl Into<&'a str>) -> Cow<'a, str> {
+    FIGURE_REGEX.replace_all(string.into(), |caps: &regex::Captures| {
         let figure = Figure::new(&caps[1], &caps[2]);
-        format!("{:?}", figure)
+        format!("{}", figure)
     })
+}
+
+fn remove_import<'a>(string: impl Into<&'a str>) -> Cow<'a, str> {
+    IMPORT_REGEX.replace_all(string.into(), "")
 }
 
 fn find_all_figures_in_string(string: &str) -> io::Result<Vec<String>> {
@@ -111,7 +178,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     for file in files {
         let outfile = build_out_filename(&file);
         let string: String = fs::read_to_string(file)?;
-        let replaced = replace_figures(&string);
+        let no_figures = replace_figures(&*string).to_string();
+        let replaced = remove_import(&*no_figures);
         fs::write(outfile, replaced.to_string())?;
     }
     Ok(())

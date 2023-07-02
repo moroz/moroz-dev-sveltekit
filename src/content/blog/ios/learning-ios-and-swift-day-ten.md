@@ -9,8 +9,6 @@ summary: |
   I also present a simple component with an image placed in a circle.
 
 ---
-import Figure from "@components/Figure.astro";
-
 A very important feature of the ecosystem, one that I have wanted to learn for long, is internationalization, commonly abbreviated as i18n.
 The book teaches i18n in its simplest form, translating strings.
 Below is a fairly complicated view with translated strings.
@@ -71,7 +69,14 @@ genstrings -o en.lproj Views/*.swift Models/*.swift
 After more GUI-based configuration, Xcode generated a `zh-Hant.lproj` folder for me, with a `Localizable.strings` file inside.
 After lazily translating all strings, I managed to get the following view localized:
 
-<Figure src="/images/ios-10/localized-welome-screen.webp">The lazily translated &ldquo;Welcome&rdquo; view.</Figure>
+<figure>
+  <a href="/images/ios-10/localized-welome-screen.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-10/localized-welome-screen.webp" />
+    </picture>
+  </a>
+  <figcaption>The lazily translated &ldquo;Welcome&rdquo; view.</figcaption>
+</figure>
 
 This example shows that our existing localization strategy is inherently broken, because the English phrase "Get fit with high intensity interval training" has been split into two lines. In Chinese, the part "with high intensity interval training" would go before "get fit", but there is no way to move these two around in code.
 
@@ -99,9 +104,23 @@ No extension is passed, because the assets are stored in some complicated format
 
 The original image, as found in the bundle, is a square, with the intrinsic dimensions of 320x312px.
 
-<Figure src="/images/ios-10/step-up.webp">The original image, as found in the learning project.</Figure>
+<figure>
+  <a href="/images/ios-10/step-up.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-10/step-up.webp" />
+    </picture>
+  </a>
+  <figcaption>The original image, as found in the learning project.</figcaption>
+</figure>
 
 The same image, clipped in the application, looks so:
 
-<Figure src="/images/ios-10/step-up-rounded.webp">After cropping.</Figure>
+<figure>
+  <a href="/images/ios-10/step-up-rounded.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-10/step-up-rounded.webp" />
+    </picture>
+  </a>
+  <figcaption>After cropping.</figcaption>
+</figure>
 

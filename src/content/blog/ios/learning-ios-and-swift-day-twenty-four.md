@@ -10,8 +10,6 @@ summary: |
   I also learned how to overlay text and a gradient over an image.
 
 ---
-import Figure from "@components/Figure.astro";
-
 Following one of the later chapters of Apple's SwiftUI tutorial, [Interfacing with UIKit](https://developer.apple.com/tutorials/swiftui/interfacing-with-uikit), I built a carousel view that displays a set of featured landmark cards and lets the user swipe left and right to see the next or previous featured landmark.
 
 The carousel itself is a built-in UIKit component called [UIPageViewController](https://developer.apple.com/documentation/uikit/uipageviewcontroller).
@@ -26,7 +24,14 @@ The fact that this logic is defined using required callbacks means that the caro
 
 The tutorial teaches how to implement the following layout, and it does so in a rather matter-of-factly way.
 
-<Figure alt="Turtle Rock. Joshua Tree National Park. Text overlaid over an image." src="/images/ios-24/feature-card.webp">Text and gradient overlaid over an image.</Figure>
+<figure>
+  <a href="/images/ios-24/feature-card.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-24/feature-card.webp" alt="Turtle Rock. Joshua Tree National Park. Text overlaid over an image." />
+    </picture>
+  </a>
+  <figcaption>Text and gradient overlaid over an image.</figcaption>
+</figure>
 
 So basically to do an overlay like this, you define what your overlay should look like, for instance using a separate component:
 

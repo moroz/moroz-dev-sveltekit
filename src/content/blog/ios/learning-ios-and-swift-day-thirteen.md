@@ -7,8 +7,6 @@ summary: |
   I intended to write about `@AppStorage` and `@SceneStorage`, but I ended up playing around with SQLite3 in C and Swift.
 ---
 
-import Figure from "../../../components/Figure.astro";
-
 Today I followed chapter 8 of the [SwiftUI Apprentice]() tutorial.
 Although a bit difficult to follow, the chapter described several data persistence APIs on Apple platforms, and taught how to use `@AppStorage` and `@SceneStorage`.
 These APIs persist data in a space called "user defaults," which is a wrapper for "property lists," which in turn are basically XML files saved to the application's sandboxed file storage (under `Library/Preferences`, IIRC).

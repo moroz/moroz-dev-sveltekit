@@ -8,8 +8,6 @@ summary: |
   I implemented adding custom amounts of mantras or repetitions of practices to the Ngöndro Tracker using a wrapper for `UIAlertController`.
 
 ---
-import Figure from "@components/Figure.astro";
-
 Today I worked to implement another MVP feature of my side project app called Ngöndro Tracker.
 As a reminder to readers unfamiliar with Tibetan Buddhism, _ngöndro_ is a set of four meditation practices performed by practicioners of Tibetan Buddhism.
 Each of the practices contains a certain mantra or exercise that is repeated multiple times during each meditation session.
@@ -22,7 +20,14 @@ The application that my design and functionality is based on is [iMala -- Medita
 For some reason, the version I use every day has been removed from the App Store and replaced with a new one.
 In the app that I use, the practice view looks like this:
 
-<Figure src="/images/ios-19/imala.webp">Adding custom amounts in iMala.</Figure>
+<figure>
+  <a href="/images/ios-19/imala.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-19/imala.webp" />
+    </picture>
+  </a>
+  <figcaption>Adding custom amounts in iMala.</figcaption>
+</figure>
 
 The dialog box displayed in the screenshot is displayed using a class called [UIAlertController](https://developer.apple.com/documentation/uikit/uialertcontroller).
 Unfortunately, this class is a part of UIKit, and there is no idiomatic way to implement the same in SwiftUI.
@@ -64,11 +69,29 @@ When the user taps the "Add" action, the handler fetches the text value from the
 
 At this point, the practice view looks like this:
 
-<Figure src="/images/ios-19/practice-view.webp" darkSrc="/images/ios-19/practice-view-dark.webp">Single practice view, with the option to add either 108 or a custom amount.</Figure>
+<figure>
+  <a href="/images/ios-19/practice-view.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <source srcset="/images/ios-19/practice-view.webp" media="(prefers-color-scheme: light)" />
+      <source srcset="/images/ios-19/practice-view-dark.webp" media="(prefers-color-scheme: dark)" />
+      <img src="/images/ios-19/practice-view.webp" />
+    </picture>
+  </a>
+  <figcaption>Single practice view, with the option to add either 108 or a custom amount.</figcaption>
+</figure>
 
 When the user taps **+Custom**, this alert is presented:
 
-<Figure src="/images/ios-19/custom-amount-alert.webp" darkSrc="/images/ios-19/custom-amount-alert-dark.webp">Prompting for custom amount of repetitions.</Figure>
+<figure>
+  <a href="/images/ios-19/custom-amount-alert.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <source srcset="/images/ios-19/custom-amount-alert.webp" media="(prefers-color-scheme: light)" />
+      <source srcset="/images/ios-19/custom-amount-alert-dark.webp" media="(prefers-color-scheme: dark)" />
+      <img src="/images/ios-19/custom-amount-alert.webp" />
+    </picture>
+  </a>
+  <figcaption>Prompting for custom amount of repetitions.</figcaption>
+</figure>
 
 At this point, when the alert is open, the view collapses to the safe space above the keyboard.
 I did not know how to prevent this, and replacing the view's `HStack` with a `ScrollView` did not help.
@@ -125,4 +148,13 @@ var body: some View {
 
 The resulting view:
 
-<Figure src="/images/ios-19/custom-amount-ignores-safe.webp" darkSrc="/images/ios-19/custom-amount-ignores-safe-dark.webp">Prompting for custom amount of repetitions, now without resizing the view.</Figure>
+<figure>
+  <a href="/images/ios-19/custom-amount-ignores-safe.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <source srcset="/images/ios-19/custom-amount-ignores-safe.webp" media="(prefers-color-scheme: light)" />
+      <source srcset="/images/ios-19/custom-amount-ignores-safe-dark.webp" media="(prefers-color-scheme: dark)" />
+      <img src="/images/ios-19/custom-amount-ignores-safe.webp" />
+    </picture>
+  </a>
+  <figcaption>Prompting for custom amount of repetitions, now without resizing the view.</figcaption>
+</figure>

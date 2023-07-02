@@ -9,8 +9,6 @@ summary: |
   Does it mean I will learn how to make stuff as pretty as Apple's native apps?
 
 ---
-import Figure from "@components/Figure.astro";
-
 Today I followed the chapter [Drawing Paths and Shapes](https://developer.apple.com/tutorials/swiftui/drawing-paths-and-shapes) from Apple's SwiftUI tutorial.
 At first, the tutorial taught me how to draw a rounded hexagon using hard-coded path segments of B&eacute;zier curves.
 If I understood it correctly, a B&eacute;zier curve consists of three (or more?) points which define the start and end of a line, and its curvature.
@@ -21,7 +19,14 @@ Although Web technologies constitute my comfort zone when it comes to building p
 
 Luckily, Apple's `CoreGraphics` can definitely be written by hand, even if at this point I couldn't come up with the same ingenious code that paints a gradient-filled, rounded hexagon on the screen:
 
-<Figure src="/images/ios-20/hexagon.webp" alt="Screenshot of an Xcode window with the preview of a gradient-filled, rounded hexagon.">A rounded hexagon displayed with SwiftUI (click to enlarge).</Figure>
+<figure>
+  <a href="/images/ios-20/hexagon.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-20/hexagon.webp" alt="Screenshot of an Xcode window with the preview of a gradient-filled, rounded hexagon." />
+    </picture>
+  </a>
+  <figcaption>A rounded hexagon displayed with SwiftUI (click to enlarge).</figcaption>
+</figure>
 
 Then, there is a snippet I understand much better, which renders a complex polygon using an array of `CGPoint`s:
 
@@ -54,7 +59,14 @@ struct BadgeSymbol: View {
 
 The resulting shape:
 
-<Figure src="/images/ios-20/polygon.webp" alt="A polygon shape built using points.">A polygon &ndash; not quite as impressive, but easier to grasp.</Figure>
+<figure>
+  <a href="/images/ios-20/polygon.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-20/polygon.webp" alt="A polygon shape built using points." />
+    </picture>
+  </a>
+  <figcaption>A polygon &ndash; not quite as impressive, but easier to grasp.</figcaption>
+</figure>
 
 The tutorial then proceeds with overlaying complex polygons and other shapes on top of the gradient-filled rounded hexagon.
 This is a matter I shall explore tomorrow.

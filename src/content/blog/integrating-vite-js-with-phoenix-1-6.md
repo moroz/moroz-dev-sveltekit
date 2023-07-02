@@ -5,8 +5,6 @@ date: 2021-10-18
 summary: |
   How to leverage the speed of Vite.js to develop full stack application with Phoenix 1.6 and React, or what to do if you love Elixir, but you are also addicted to nice and shiny JS bundling tools.
 ---
-import Figure from "@components/Figure.astro";
-
 This article describes the process of integrating a new [Phoenix 1.6](https://www.phoenixframework.org/) application with [Vite.js](https://vitejs.dev/) for development and deployment purposes.
 We are going to configure assets bundling for a barebones React.js/TypeScript application and style it with [Bulma](https://bulma.io/) and [SASS](https://sass-lang.com/).
 This article was originally released as a <a href="https://vite-ppt.moroz.dev/" target="_blank" rel="noopener noreferer">Reveal.js presentation</a> for internal use at my current company.
@@ -206,7 +204,14 @@ We disable source maps in production builds and opt not to generate a manifest f
 
 If we launch `mix phx.server` at this point, we should still see the default Phoenix application page:
 
-<Figure src="/images/vite/initial-view.webp">Screenshot of Phoenix application page in Safari</Figure>
+<figure>
+  <a href="/images/vite/initial-view.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/vite/initial-view.webp" />
+    </picture>
+  </a>
+  <figcaption>Screenshot of Phoenix application page in Safari</figcaption>
+</figure>
 
 Now, let us break it all so we can have some fun with React.
 With a Vite.js-based workflow, we will import different asset files in development and in production builds. Therefore, we will need a way to conditionally render `<script>` tags based on Mix environment.

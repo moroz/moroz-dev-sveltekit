@@ -9,8 +9,6 @@ summary: |
   Brief description of a prototype scene built along chapter 3 of <em>SwiftUI Apprentice</em>.
 
 ---
-import Figure from "@components/Figure.astro";
-
 ## Syncing Xcode keyboard settings between devices
 
 Xcode stores customized keybindings at `~/Library/Developer/Xcode/UserData/KeyBindings/Default.idekeybindings`.
@@ -43,7 +41,14 @@ As it turns out, with [coc-sourcekit](https://github.com/klaaspieter/coc-sourcek
 I assume the delay is due to the fact that CoC is built in Node and has some Neovim RPC overhead while Xcode uses optimized binaries.
 I was initially under the impression that the language server only worked with open source Swift libraries like Foundation, but apparently it also works for SwiftUI just fine.
 
-<Figure src="/images/ios-9/nvim-swift-lsp.webp">Neovim providing nice auto-completion for SwiftUI components.</Figure>
+<figure>
+  <a href="/images/ios-9/nvim-swift-lsp.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-9/nvim-swift-lsp.webp" />
+    </picture>
+  </a>
+  <figcaption>Neovim providing nice auto-completion for SwiftUI components.</figcaption>
+</figure>
 
 ## Exercise view
 
@@ -53,7 +58,14 @@ For some reason, the layout I ended up with is different from the one shown in t
 There is more padding under the timer, which breaks the layout on smaller screens.
 This is the view as of the end of the chapter:
 
-<Figure src="/images/ios-9/exercise-screen.webp">Prototype of the exercise screen with slightly broken layout, simulated on a 9.7-inch iPad Pro.</Figure>
+<figure>
+  <a href="/images/ios-9/exercise-screen.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-9/exercise-screen.webp" />
+    </picture>
+  </a>
+  <figcaption>Prototype of the exercise screen with slightly broken layout, simulated on a 9.7-inch iPad Pro.</figcaption>
+</figure>
 
 Below is the source code of this view (slightly formatted to fit this blog post):
 
@@ -116,7 +128,14 @@ Another useful feature of SwiftUI is `Image`, providing access to an insane coll
 It seems that many icons in iOS and macOS 11+ are implemented using these icons, including the green battery symbol with a Harry Potter scar.
 You can learn more about these icons at the website of [SF Symbols](https://developer.apple.com/sf-symbols/).
 
-<Figure src="/images/ios-9/screen-color-medium_2x.webp">A demonstration of SF Symbols from Apple's website.</Figure>
+<figure>
+  <a href="/images/ios-9/screen-color-medium_2x.webp" title="Click to enlarge" target="_blank">
+    <picture>
+      <img src="/images/ios-9/screen-color-medium_2x.webp" />
+    </picture>
+  </a>
+  <figcaption>A demonstration of SF Symbols from Apple's website.</figcaption>
+</figure>
 
 Thank you for your attention. I will see you in the next post.
 Please share your thoughts using the form below.
