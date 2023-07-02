@@ -20,9 +20,9 @@ export async function formatMarkdown(md: string) {
 	const processed = await unified()
 		.use(remarkParse)
 		.use(remarkSmartypants)
-		.use(remarkRehype)
+		.use(remarkRehype, { allowDangerousHtml: true })
 		.use(rehypeStarryNight)
-		.use(rehypeStringify)
+		.use(rehypeStringify, { allowDangerousHtml: true })
 		.process(md);
 
 	return String(processed);
